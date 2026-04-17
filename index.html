@@ -22,5 +22,110 @@
     background-size: cover; background-position: center; z-index: 0;
   }
   .sun { position: absolute; top: 12%; right: 18%; width: 180px; height: 180px; border-radius: 50%; background: radial-gradient(circle, #ffe066 0%, #c9993a 45%, transparent 70%); filter: blur(18px); opacity: .55; animation: pulse 6s ease-in-out infinite; z-index: 1; }
-  @keyframes pulse { 0%,100
-                    
+  @keyframes pulse { 0%,100% { transform: scale(1); opacity:.55; } 50% { transform: scale(1.15); opacity:.7; } }
+  .waves { position: absolute; bottom: 0; left: 0; right: 0; height: 120px; background: linear-gradient(to top, rgba(30,95,116,0.6), transparent); z-index: 1; }
+  
+  .hero-content { position: relative; z-index: 3; text-align: center; padding: 2rem; animation: fadeUp 1.4s ease both; }
+  @keyframes fadeUp { from { opacity:0; transform: translateY(40px); } to { opacity:1; transform: translateY(0); } }
+  .label { font-weight: 100; letter-spacing: .45em; font-size: .75rem; color: var(--gold); text-transform: uppercase; margin-bottom: 1.4rem; }
+  h1 { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(3.5rem, 9vw, 8rem); line-height: .95; margin-bottom: 2rem; }
+  h1 em { font-style: italic; color: var(--gold); }
+  .hero-desc { max-width: 620px; margin: 0 auto 2.5rem; font-size: clamp(.85rem, 1.5vw, 1rem); font-weight: 300; line-height: 1.9; color: rgba(253,246,227,.75); }
+
+  /* INTRO */
+  .intro { background: var(--cream); color: var(--deep); padding: 6rem 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1100px; margin: 0 auto; }
+  @media(max-width:700px){ .intro{grid-template-columns:1fr;gap:2.5rem;} }
+  .intro-text h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem,4vw,3rem); font-weight: 400; margin-bottom: 1.5rem; }
+  .intro-text p { font-size: .9rem; font-weight: 300; line-height: 1.9; color: var(--ash); margin-bottom: 1rem; }
+  .facts { display: flex; flex-direction: column; gap: 1.4rem; justify-content: center; }
+  .fact { display: flex; align-items: flex-start; gap: 1rem; padding-bottom: 1.4rem; border-bottom: 1px solid rgba(26,18,8,0.12); }
+  .fact-num { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; color: var(--gold); line-height: 1; min-width: 3rem; }
+
+  /* GRID */
+  .islands-section { padding: 6rem 2rem; background: var(--deep); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; max-width: 1200px; margin: 0 auto; }
+  .island-card { position: relative; overflow: hidden; aspect-ratio: 3/4; cursor: pointer; border-radius: 4px; }
+  .island-card .bg { position: absolute; inset: 0; transition: transform .7s ease; background-size: cover; background-position: center; }
+  .island-card:hover .bg { transform: scale(1.1); }
+  
+  /* Photos */
+  .bg-tenerife { background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?auto=format&fit=crop&w=600&q=80'); }
+  .bg-gran { background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1595304140616-6086f688029c?auto=format&fit=crop&w=600&q=80'); }
+  .bg-lanzarote { background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1547141505-86641e755519?auto=format&fit=crop&w=600&q=80'); }
+  .bg-fuerteventura { background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1515238152791-8216bfdf89a7?auto=format&fit=crop&w=600&q=80'); }
+  .bg-lapalma { background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1632731872856-4c6cc0e65330?auto=format&fit=crop&w=600&q=80'); }
+  .bg-lagomera { background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1518335359929-22a862660a92?auto=format&fit=crop&w=600&q=80'); }
+  .bg-hierro { background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1505881502353-a1986add3732?auto=format&fit=crop&w=600&q=80'); }
+
+  .island-card .info { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem 1.8rem; }
+  .island-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; font-weight: 300; margin-bottom: .4rem; }
+  .island-card .tagline { font-size: .7rem; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); margin-bottom: .8rem; }
+  .island-card p { font-size: .78rem; font-weight: 300; line-height: 1.7; color: rgba(253,246,227,.7); max-height: 0; overflow: hidden; transition: .5s; opacity: 0; }
+  .island-card:hover p { max-height: 100px; opacity: 1; }
+  .island-link { margin-top: .9rem; font-size: .7rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(201,153,58,.4); width: fit-content; }
+
+  footer { background: #0d0a04; text-align: center; padding: 3rem 2rem; font-size: .7rem; letter-spacing: .25em; color: rgba(232,213,176,.3); }
+  footer span { color: var(--gold); }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="sun"></div>
+  <div class="waves"></div>
+  <div class="hero-content">
+    <p class="label">Archipelag Atlantycki · Hiszpania</p>
+    <h1>Wyspy<br><em>Kanaryjskie</em></h1>
+    <p class="hero-desc">Kraina wiecznej wiosny, uformowana przez ogień wulkanów i wygładzona przez wieki atlantyckich wiatrów.</p>
+  </div>
+</section>
+
+<div style="background:var(--cream)">
+  <div class="intro">
+    <div class="intro-text">
+      <h2>Wieczna wiosna</h2>
+      <p>Siedem wysp, z których każda ma zupełnie odrębny charakter — od księżycowych krajobrazów Lanzarote po bujną roślinność La Palmy.</p>
+    </div>
+    <div class="facts">
+      <div class="fact"><div class="fact-num">7</div><div><div class="fact-label">WYSP</div></div></div>
+      <div class="fact"><div class="fact-num">22°C</div><div><div class="fact-label">ŚREDNIA TEMP.</div></div></div>
+    </div>
+  </div>
+</div>
+
+<section class="islands-section">
+  <div class="grid">
+    <div class="island-card">
+      <div class="bg bg-tenerife"></div>
+      <div class="info">
+        <div class="tagline">Wyspa Wiecznej Wiosny</div>
+        <h3>Tenerifa</h3>
+        <p>Największa wyspa archipelagu, dumna z wulkanu Teide — najwyższego szczytu Hiszpanii.</p>
+        <a href="tenerifa.html" class="island-link">Odkryj wyspę</a>
+      </div>
+    </div>
+    <div class="island-card">
+        <div class="bg bg-gran"></div>
+        <div class="info">
+          <div class="tagline">Kontynent w miniaturze</div>
+          <h3>Gran Canaria</h3>
+          <p>Od złotych diun Maspalomas po tętniące życiem Las Palmas.</p>
+          <a href="#" class="island-link">Odkryj wyspę</a>
+        </div>
+      </div>
+      <div class="island-card">
+        <div class="bg bg-lanzarote"></div>
+        <div class="info">
+          <div class="tagline">Wyspa Ognia</div>
+          <h3>Lanzarote</h3>
+          <p>Czarne pola lawy i niesamowita architektura Césara Manrique.</p>
+          <a href="#" class="island-link">Odkryj wyspę</a>
+        </div>
+      </div>
+  </div>
+</section>
+
+<footer>&copy; 2026 · <span>Wyspy Kanaryjskie</span></footer>
+</body>
+</html>
