@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wyspy Kanaryjskie</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Josefin+Sans:wght@100;300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sand: #e8d5b0;
+    --gold: #c9993a;
+    --deep: #1a1208;
+    --lava: #8b2e0f;
+    --ocean: #1e5f74;
+    --cream: #fdf6e3;
+    --ash: #3d3830;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: var(--deep);
+    color: var(--cream);
+    font-family: 'Josefin Sans', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 80%, rgba(139,46,15,.55) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 20%, rgba(30,95,116,.5) 0%, transparent 55%),
+      radial-gradient(ellipse at 50% 50%, rgba(201,153,58,.18) 0%, transparent 70%),
+      linear-gradient(170deg, #0d0a04 0%, #1a1208 40%, #0e1f28 100%);
+    z-index: 0;
+  }
+
+  /* animated "sun" */
+  .sun {
+    position: absolute;
+    top: 12%;
+    right: 18%;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #ffe066 0%, #c9993a 45%, transparent 70%);
+    filter: blur(18px);
+    opacity: .55;
+    animation: pulse 6s ease-in-out infinite;
+    z-index: 1;
+  }
+  @keyframes pulse {
+    0%,100% { transform: scale(1); opacity:.55; }
+    50%      { transform: scale(1.15); opacity:.7; }
+  }
+
+  /* waves at bottom */
+  .waves {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 120px;
+    background:
+      linear-gradient(to top, rgba(30,95,116,.6), transparent);
+    z-index: 1;
+  }
+
+  /* grain overlay */
+  .hero::after {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.07'/%3E%3C/svg%3E");
+    background-size: 150px;
+    opacity: .4;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .hero-content {
+    position: relative; z-index: 3;
+    text-align: center;
+    padding: 2rem;
+    animation: fadeUp 1.4s ease both;
+  }
+  @keyframes fadeUp {
+    from { opacity:0; transform: translateY(40px); }
+    to   { opacity:1; transform: translateY(0); }
+  }
+
+  .label {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 100;
+    letter-spacing: .45em;
+    font-size: .75rem;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1.4rem;
+    animation: fadeUp 1.4s .2s ease both;
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(3.5rem, 9vw, 8rem);
+    line-height: .95;
+    letter-spacing: -.01em;
+    margin-bottom: 2rem;
+    animation: fadeUp 1.4s .35s ease both;
+  }
+  h1 em { font-style: italic; color: var(--gold); }
+
+  .hero-desc {
+    max-width: 620px;
+    margin: 0 auto 2.5rem;
+    font-size: clamp(.85rem, 1.5vw, 1rem);
+    font-weight: 300;
+    line-height: 1.9;
+    color: rgba(253,246,227,.75);
+    animation: fadeUp 1.4s .5s ease both;
+  }
+
+  .scroll-hint {
+    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+    z-index: 3;
+    display: flex; flex-direction: column; align-items: center; gap: .5rem;
+    font-size: .65rem; letter-spacing: .3em; color: var(--gold); opacity: .6;
+    animation: bounce 2.5s ease-in-out infinite;
+  }
+  .scroll-hint span { display: block; width: 1px; height: 40px; background: var(--gold); }
+  @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }
+
+  /* ── INTRO ── */
+  .intro {
+    background: var(--cream);
+    color: var(--deep);
+    padding: 6rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  @media(max-width:700px){ .intro{grid-template-columns:1fr;gap:2.5rem;} }
+
+  .intro-text h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem,4vw,3rem);
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+  }
+  .intro-text p {
+    font-size: .9rem; font-weight: 300; line-height: 1.9;
+    color: var(--ash);
+    margin-bottom: 1rem;
+  }
+
+  .facts {
+    display: flex; flex-direction: column; gap: 1.4rem;
+    justify-content: center;
+  }
+  .fact {
+    display: flex; align-items: flex-start; gap: 1rem;
+    padding-bottom: 1.4rem;
+    border-bottom: 1px solid rgba(26,18,8,.12);
+  }
+  .fact:last-child { border-bottom: none; }
+  .fact-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem; font-weight: 300;
+    color: var(--gold); line-height: 1;
+    min-width: 3rem;
+  }
+  .fact-label { font-size: .75rem; letter-spacing: .2em; text-transform: uppercase; color: var(--ash); }
+  .fact-val { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--deep); }
+
+  /* ── ISLANDS GRID ── */
+  .islands-section {
+    padding: 6rem 2rem;
+    background: var(--deep);
+  }
+  .section-title {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+  .section-title .label { color: var(--gold); display: block; margin-bottom: .8rem; }
+  .section-title h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem,4vw,3.2rem);
+    font-weight: 300;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .island-card {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 3/4;
+    cursor: pointer;
+  }
+
+  .island-card .bg {
+    position: absolute; inset: 0;
+    transition: transform .7s cubic-bezier(.25,.46,.45,.94);
+  }
+  .island-card:hover .bg { transform: scale(1.08); }
+
+  /* unique gradient per island */
+  .bg-tenerife   { background: linear-gradient(160deg,#1a2a3a 0%,#8b2e0f 100%); }
+  .bg-gran       { background: linear-gradient(160deg,#c9993a 0%,#8b5e0f 50%,#1a1208 100%); }
+  .bg-lanzarote  { background: linear-gradient(160deg,#3d1a0a 0%,#c9993a 60%,#1e5f74 100%); }
+  .bg-fuerteventura { background: linear-gradient(160deg,#e8d5b0 0%,#c9993a 40%,#1e5f74 100%); }
+  .bg-lapalma    { background: linear-gradient(160deg,#0d2b1a 0%,#1a5c2e 50%,#1a1208 100%); }
+  .bg-lagomera   { background: linear-gradient(160deg,#1a3a1a 0%,#2a6b35 60%,#0d0a04 100%); }
+  .bg-hierro     { background: linear-gradient(160deg,#0d1a2b 0%,#1e5f74 50%,#1a1208 100%); }
+
+  /* island silhouette shapes via clip-path pseudo */
+  .island-card::before {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 50%;
+    background: rgba(0,0,0,.25);
+    clip-path: ellipse(60% 55% at 50% 100%);
+    z-index: 1;
+  }
+
+  .island-card .info {
+    position: absolute; inset: 0; z-index: 2;
+    display: flex; flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem 1.8rem;
+    background: linear-gradient(to top, rgba(10,6,2,.85) 0%, transparent 55%);
+  }
+
+  .island-card .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem; font-weight: 300;
+    color: rgba(201,153,58,.18);
+    position: absolute; top: 1rem; right: 1.2rem;
+    line-height: 1;
+    transition: color .4s;
+  }
+  .island-card:hover .num { color: rgba(201,153,58,.45); }
+
+  .island-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.9rem; font-weight: 300;
+    margin-bottom: .4rem;
+    letter-spacing: .02em;
+  }
+
+  .island-card .tagline {
+    font-size: .7rem; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: .8rem;
+  }
+
+  .island-card p {
+    font-size: .78rem; font-weight: 300; line-height: 1.7;
+    color: rgba(253,246,227,.7);
+    max-height: 0; overflow: hidden;
+    transition: max-height .5s ease, opacity .5s;
+    opacity: 0;
+  }
+  .island-card:hover p { max-height: 120px; opacity: 1; }
+
+  .island-link {
+    display: inline-flex; align-items: center; gap: .5rem;
+    margin-top: .9rem;
+    font-size: .7rem; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(201,153,58,.4);
+    padding-bottom: 2px;
+    transition: border-color .3s, gap .3s;
+    width: fit-content;
+  }
+  .island-link:hover { border-color: var(--gold); gap: .9rem; }
+  .island-link::after { content: '→'; font-size: .9rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0d0a04;
+    text-align: center;
+    padding: 3rem 2rem;
+    font-size: .7rem; letter-spacing: .25em; text-transform: uppercase;
+    color: rgba(232,213,176,.3);
+  }
+  footer span { color: var(--gold); }
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="sun"></div>
+  <div class="waves"></div>
+
+  <div class="hero-content">
+    <p class="label">Archipelag Atlantycki · Hiszpania</p>
+    <h1>Wyspy<br><em>Kanaryjskie</em></h1>
+    <p class="hero-desc">
+      Siedem wysp wyłonionych z morskiej kipieli, uformowanych przez ogień wulkanów
+      i wygładzonych przez wieki atlantyckich wiatrów. Kraina wiecznej wiosny,
+      gdzie pustynne piaski spotykają się z szmaragdową zielenią lasów laurowych,
+      a lawa tworzy krajobrazy rodem z innego świata.
+    </p>
+  </div>
+
+  <div class="scroll-hint">ODKRYJ<span></span></div>
+</section>
+
+<!-- ═══ INTRO ═══ -->
+<div style="background:var(--cream)">
+  <div class="intro">
+    <div class="intro-text">
+      <h2>Wieczna wiosna na skraju Afryki</h2>
+      <p>
+        Wyspy Kanaryjskie leżą na Oceanie Atlantyckim, około 100 km od wybrzeży
+        Afryki Zachodniej, choć politycznie stanowią autonomiczną wspólnotę Hiszpanii.
+        Archipelag tworzą trzy prowincje i siedem zamieszkałych wysp, z których każda
+        ma zupełnie odrębny charakter — od księżycowych krajobrazów Lanzarote po
+        bujna tropikalną roślinność La Palmy.
+      </p>
+      <p>
+        Łagodny klimat z temperaturami między 18 a 25°C przez cały rok przyciąga
+        rocznie ponad 12 milionów turystów. Pod powierzchnią wysp kryją się aktywne
+        wulkany; erupcja na La Palmie w 2021 roku przypomniała światu, że archipelag
+        nadal żyje i zmienia swoje oblicze.
+      </p>
+    </div>
+
+    <div class="facts">
+      <div class="fact">
+        <div class="fact-num">7</div>
+        <div>
+          <div class="fact-label">głównych wysp</div>
+          <div class="fact-val">Tenerifa, Gran Canaria, Lanzarote…</div>
+        </div>
+      </div>
+      <div class="fact">
+        <div class="fact-num">3715<span style="font-size:1.4rem">m</span></div>
+        <div>
+          <div class="fact-label">najwyższy szczyt</div>
+          <div class="fact-val">Teide, Tenerifa — wulkan i symbol</div>
+        </div>
+      </div>
+      <div class="fact">
+        <div class="fact-num">22°C</div>
+        <div>
+          <div class="fact-label">średnia roczna temperatura</div>
+          <div class="fact-val">Słońce przez 300+ dni w roku</div>
+        </div>
+      </div>
+      <div class="fact">
+        <div class="fact-num">2,2M</div>
+        <div>
+          <div class="fact-label">mieszkańców</div>
+          <div class="fact-val">Dwie stolice: Las Palmas i S/C de Tenerife</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ ISLANDS GRID ═══ -->
+<section class="islands-section">
+  <div class="section-title">
+    <span class="label">Wybierz swoją wyspę</span>
+    <h2>Siedem Światów</h2>
+  </div>
+
+  <div class="grid">
+
+    <!-- Tenerifa -->
+    <div class="island-card">
+      <div class="bg bg-tenerife"></div>
+      <div class="num">01</div>
+      <div class="info">
+        <div class="tagline">„Wyspa Wiecznej Wiosny"</div>
+        <h3>Tenerifa</h3>
+        <p>Największa wyspa archipelagu, dumna z wulkanu Teide — najwyższego szczytu Hiszpanii i trzeciego wulkanu na świecie mierzonego od podstawy oceanu. Park Narodowy Teide to UNESCO i spektakularne marsjańskie krajobrazy.</p>
+        <a href="tenerifa.html" class="island-link">Odkryj wyspę</a>
+      </div>
+    </div>
+
+    <!-- Gran Canaria -->
+    <div class="island-card">
+      <div class="bg bg-gran"></div>
+      <div class="num">02</div>
+      <div class="info">
+        <div class="tagline">„Kontynent w miniaturze"</div>
+        <h3>Gran Canaria</h3>
+        <p>Okrągły kontynent w miniaturze — od złotych diun Maspalomas przez szmaragdowe wnętrze pełne wąwozów po tętniące życiem Las Palmas. Uznawana za najróżnorodniejszą krajobrazowo wyspę całego archipelagu.</p>
+        <a href="gran-canaria.html" class="island-link">Odkryj wyspę</a>
+      </div>
+    </div>
+
+    <!-- Lanzarote -->
+    <div class="island-card">
+      <div class="bg bg-lanzarote"></div>
+      <div class="num">03</div>
+      <div class="info">
+        <div class="tagline">„Wyspa Ognia"</div>
+        <h3>Lanzarote</h3>
+        <p>Czarne pola lawy, winnice wyrastające z wulkanicznych kraterów i architektura Césara Manrique, wtopiona w krajobraz jak biało-czarna poezja. Biosfera UNESCO i jedno z najoryginalniejszych miejsc na Atlantyku.</p>
+        <a href="lanzarote.html" class="island-link">Odkryj wyspę</a>
+      </div>
+    </div>
+
+    <!-- Fuerteventura -->
+    <div class="island-card">
+      <div class="bg bg-fuerteventura"></div>
+      <div class="num">04</div>
+      <div class="info">
+        <div class="tagline">„Wyspa Wiatru"</div>
+        <h3>Fuerteventura</h3>
+        <p>Biało-złote plaże ciągnące się kilometrami, stałe wiatry czyniące z wyspy raj dla surferów i kitesurferów. Najmłodsza geologicznie, a zarazem najstarsza wśród Kanaryjczyków — zasiedlona już przez Guanczów tysiące lat temu.</p>
+        <a href="fuerteventura.html" class="island-link">Odkryj wyspę</a>
+      </div>
+    </div>
+
+    <!-- La Palma -->
+    <div class="island-card">
+      <div class="bg bg-lapalma"></div>
+      <div class="num">05</div>
+      <div class="info">
+        <div class="tagline">„La Isla Bonita"</div>
+        <h3>La Palma</h3>
+        <p>Bujna, zielona, górzysta — i pod obserwacją astronomów całego świata. Jedno z najczystszych nieboskłonów na Ziemi mieści tu kilkanaście obserwatoriów. W 2021 r. erupcja Cumbre Vieja przypomniała, że wyspa jest wciąż żywa.</p>
+        <a href="la-palma.html" class="island-link">Odkryj wyspę</a>
+      </div>
+    </div>
+
+    <!-- La Gomera -->
+    <div class="island-card">
+      <div class="bg bg-lagomera"></div>
+      <div class="num">06</div>
+      <div class="info">
+        <div class="tagline">„Wyspa Gwizdków"</div>
+        <h3>La Gomera</h3>
+        <p>Majestatyczny las wawrzynowy Garajonay — żywy relikt trzeciorzędu i Dziedzictwo UNESCO. Słynna z Silbo Gomero, gwizdanego języka, którym mieszkańcy porozumiewali się przez doliny. Kolumb zatrzymał się tu przed wyruszeniem na podbój Nowego Świata.</p>
+        <a href="la-gomera.html" class="island-link">Odkryj wyspę</a>
+      </div>
+    </div>
+
+    <!-- El Hierro -->
+    <div class="island-card">
+      <div class="bg bg-hierro"></div>
+      <div class="num">07</div>
+      <div class="info">
+        <div class="tagline">„Meridian Zero · UNESCO"</div>
+        <h3>El Hierro</h3>
+        <p>Najdalej wysunięta na zachód i południe wyspa, ongiś uznawana za koniec świata — tu astronomowie wyznaczali południk zerowy przed Greenwichem. Dziś pierwsza na świecie wyspa dążąca do 100% energii odnawialnej.</p>
+        <a href="el-hierro.html" class="island-link">Odkryj wyspę</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  &copy; 2025 &nbsp;·&nbsp; <span>Wyspy Kanaryjskie</span> &nbsp;·&nbsp; Archipelag Atlantycki
+</footer>
+
+</body>
+</html>
