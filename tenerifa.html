@@ -6,145 +6,62 @@
 <title>Tenerifa – Wyspy Kanaryjskie</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Josefin+Sans:wght@100;300;400&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --sand: #e8d5b0; --gold: #c9993a; --deep: #1a1208;
-    --lava: #8b2e0f; --ocean: #1e5f74; --cream: #fdf6e3; --ash: #3d3830;
-  }
+  :root { --sand: #e8d5b0; --gold: #c9993a; --deep: #1a1208; --lava: #8b2e0f; --cream: #fdf6e3; --ash: #3d3830; }
   * { margin:0; padding:0; box-sizing:border-box; }
   body { background:var(--deep); color:var(--cream); font-family:'Josefin Sans',sans-serif; }
 
-  nav {
-    position: fixed; top:0; left:0; right:0; z-index:100;
-    padding: 1.2rem 2.5rem;
-    display: flex; align-items: center; justify-content: space-between;
-    background: linear-gradient(to bottom, rgba(10,6,2,.9), transparent);
-  }
+  nav { position: fixed; top:0; left:0; right:0; z-index:100; padding: 1.2rem 2.5rem; display: flex; align-items: center; justify-content: space-between; background: linear-gradient(to bottom, rgba(10,6,2,.9), transparent); }
   nav a { color:var(--gold); text-decoration:none; font-size:.7rem; letter-spacing:.3em; text-transform:uppercase; }
-  nav a:hover { opacity:.7; }
 
-  .hero {
-    min-height: 90vh;
-    display:flex; align-items:flex-end;
-    position:relative; overflow:hidden;
-    padding: 5rem 4rem;
-  }
-  .hero-bg {
-    position:absolute; inset:0;
-    background: linear-gradient(160deg, #0d0a04 0%, #8b2e0f 50%, #1a2a3a 100%);
-  }
-  .hero-bg::after {
-    content:'';
-    position:absolute; inset:0;
-    background: radial-gradient(ellipse at 70% 30%, rgba(201,153,58,.3) 0%, transparent 60%);
+  .hero { min-height: 90vh; display:flex; align-items:flex-end; position:relative; overflow:hidden; padding: 5rem 4rem; }
+  .hero-bg { 
+    position:absolute; inset:0; 
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%),
+                url('https://images.unsplash.com/photo-1552353289-97f99c844903?q=80&w=2000&auto=format&fit=crop'); 
+    background-size: cover; background-position: center;
   }
   .hero-content { position:relative; z-index:2; max-width:700px; }
-  .back-label { font-size:.65rem; letter-spacing:.35em; color:var(--gold); margin-bottom:1.5rem; display:block; }
-  h1 {
-    font-family:'Cormorant Garamond',serif;
-    font-size:clamp(4rem,9vw,8rem);
-    font-weight:300; line-height:.9;
-    margin-bottom:1.5rem;
-  }
+  h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(4rem,9vw,8rem); font-weight:300; line-height:.9; margin-bottom:1.5rem; }
   h1 em { font-style:italic; color:var(--gold); }
-  .hero-sub { font-size:.8rem; letter-spacing:.15em; color:rgba(253,246,227,.6); margin-bottom:2rem; text-transform:uppercase; }
-  .hero-desc { font-size:1rem; font-weight:300; line-height:1.9; color:rgba(253,246,227,.8); max-width:540px; }
 
-  .content { background:var(--cream); color:var(--deep); }
-  .section { max-width:1000px; margin:0 auto; padding:5rem 2rem; }
-  .section h2 {
-    font-family:'Cormorant Garamond',serif;
-    font-size:clamp(1.8rem,3.5vw,2.8rem);
-    font-weight:300; margin-bottom:1.5rem;
-  }
-  .section p { font-size:.9rem; font-weight:300; line-height:1.9; color:var(--ash); margin-bottom:1rem; }
+  .content { background:var(--cream); color:var(--deep); padding: 5rem 2rem; }
+  .section { max-width:1000px; margin:0 auto; }
+  .section h2 { font-family:'Cormorant Garamond',serif; font-size:2.8rem; margin-bottom:1.5rem; font-weight:300; }
+  .section p { line-height:1.9; color:var(--ash); margin-bottom:1.5rem; }
 
-  .highlights {
-    display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-    gap:1.5rem; margin-top:3rem;
-  }
-  .hl {
-    padding:2rem 1.5rem;
-    border:1px solid rgba(26,18,8,.15);
-    border-top: 3px solid var(--gold);
-    background:#fff;
-  }
-  .hl-icon { font-size:1.8rem; margin-bottom:.8rem; }
-  .hl h4 { font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-weight:400; margin-bottom:.5rem; }
-  .hl p { font-size:.78rem; color:var(--ash); line-height:1.7; }
+  .highlights { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1.5rem; margin-top:3rem; }
+  .hl { padding:2rem; background:#fff; border-top: 3px solid var(--gold); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+  .hl h4 { font-family:'Cormorant Garamond',serif; font-size:1.4rem; margin-bottom:0.5rem; }
 
-  footer {
-    background:#0d0a04; text-align:center;
-    padding:2.5rem; font-size:.7rem; letter-spacing:.25em; text-transform:uppercase;
-    color:rgba(232,213,176,.3);
-  }
-  footer span { color:var(--gold); }
+  footer { background:#0d0a04; text-align:center; padding:2.5rem; font-size:.7rem; color:rgba(232,213,176,.3); }
 </style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html">← Wszystkie wyspy</a>
-  <span style="font-size:.7rem;letter-spacing:.3em;color:rgba(201,153,58,.6)">TENERIFA</span>
-</nav>
+<nav><a href="index.html">← Powrót</a><span>TENERIFA</span></nav>
 
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <span class="back-label">Wyspy Kanaryjskie · Wyspa nr 01</span>
     <h1>Tene<em>rifa</em></h1>
-    <p class="hero-sub">Isla del Teide · Wyspa Wiecznej Wiosny</p>
-    <p class="hero-desc">
-      Największa i najludniejsza wyspa archipelagu, władana przez śpiący gigant
-      Teide, który od wieków hipnotyzuje żeglarzy i naukowców. Południe palmami
-      i plażami, północ zielonymi wąwozami i mgłami — dwa światy w jednym miejscu.
-    </p>
+    <p style="color:var(--gold); letter-spacing: 0.2em; text-transform: uppercase; font-size: 0.8rem;">Wyspa Wiecznej Wiosny</p>
   </div>
 </section>
 
 <div class="content">
   <div class="section">
     <h2>Serce archipelagu</h2>
-    <p>
-      Tenerifa zajmuje powierzchnię 2034 km² i zamieszkana jest przez ponad 900 000 osób.
-      Stolicą jest Santa Cruz de Tenerife, a turystycznym centrum południa — Playa de las Américas
-      i Los Cristianos. Wyspa dzieli się wyraźnie na dwie strefy klimatyczne: suche, słoneczne
-      południe i wilgotną, zieloną północ pokrytą lasami wawrzynowymi.
-    </p>
-    <p>
-      Park Narodowy Teide, wpisany na Listę Światowego Dziedzictwa UNESCO, zajmuje centralną
-      część wyspy i przyciąga ponad 4 miliony odwiedzających rocznie. Na wierzchołek (3715 m n.p.m.)
-      można dostać się kolejką linową lub po kilkugodzinnym trekkingu przez surrealistyczne
-      pola lawy.
-    </p>
-
+    <p>Tenerifa to nie tylko plaże. To przede wszystkim potężny wulkan Teide, który dominuje nad horyzontem i tworzy niesamowity mikroklimat wyspy.</p>
+    
     <div class="highlights">
-      <div class="hl">
-        <div class="hl-icon">🌋</div>
-        <h4>Teide</h4>
-        <p>Najwyższy szczyt Hiszpanii i trzeci wulkan świata mierzony od podstawy oceanu. Park Narodowy UNESCO.</p>
-      </div>
-      <div class="hl">
-        <div class="hl-icon">🏖️</div>
-        <h4>Playa de las Teresitas</h4>
-        <p>Złota plaża pokryta piaskiem sprowadzonym z Sahary, osłonięta naturalną rafą koralową.</p>
-      </div>
-      <div class="hl">
-        <div class="hl-icon">🌿</div>
-        <h4>Anaga Rural Park</h4>
-        <p>Pradawny las wawrzynowy na północno-wschodnim cyplu, pełen dzikich wąwozów i endemicznych gatunków.</p>
-      </div>
-      <div class="hl">
-        <div class="hl-icon">🎭</div>
-        <h4>Karnawał w Santa Cruz</h4>
-        <p>Drugi największy karnawał na świecie po Rio de Janeiro — tańce, stroje, muzyka przez dwa tygodnie.</p>
-      </div>
+      <div class="hl"><h4>🌋 Teide</h4><p>Najwyższy szczyt Hiszpanii i surrealistyczne pola lawy.</p></div>
+      <div class="hl"><h4>🌿 Anaga</h4><p>Pradawne lasy wawrzynowe spowite mgłą.</p></div>
+      <div class="hl"><h4>🎭 Karnawał</h4><p>Feeria barw i rytmy w Santa Cruz.</p></div>
     </div>
   </div>
 </div>
 
-<footer>
-  &copy; 2025 &nbsp;·&nbsp; <span>Wyspy Kanaryjskie</span> &nbsp;·&nbsp; Tenerifa
-</footer>
+<footer>&copy; 2026 · <span>Wyspy Kanaryjskie</span></footer>
 
 </body>
 </html>
