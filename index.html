@@ -13,18 +13,21 @@
                         url('https://picsum.photos/id/1015/2000/1200') center/cover no-repeat;
             min-height: 100vh;
         }
+        html { scroll-behavior: smooth; }
     </style>
 </head>
-<body class="bg-zinc-50 flex flex-col min-h-screen m-0 p-0"> <nav class="bg-red-700 text-white sticky top-0 z-50 shadow-lg">
+<body class="bg-zinc-50 flex flex-col min-h-screen m-0 p-0">
+
+    <nav class="bg-red-700 text-white sticky top-0 z-50 shadow-lg">
         <div class="max-w-7xl mx-auto px-5 py-4 flex justify-center items-center gap-8">
             <div class="flex items-center">
                 <i class="fas fa-bear text-3xl"></i>
             </div>
             <div class="flex gap-5 text-sm font-medium">
-                <a href="#ogolne" class="hover:text-yellow-300">Start</a>
-                <a href="#historia" class="hover:text-yellow-300">Historia</a>
-                <a href="#dzisiaj" class="hover:text-yellow-300">Dzisiaj</a>
-                <a href="#atrakcje" class="hover:text-yellow-300">Atrakcje</a>
+                <a href="#ogolne" class="hover:text-yellow-300 transition">Start</a>
+                <a href="#historia" class="hover:text-yellow-300 transition">Historia</a>
+                <a href="#dzisiaj" class="hover:text-yellow-300 transition">Dzisiaj</a>
+                <a href="#atrakcje" class="hover:text-yellow-300 transition">Atrakcje</a>
             </div>
         </div>
     </nav>
@@ -33,7 +36,7 @@
         <div class="max-w-2xl mx-auto text-center px-6 pt-20">
             <h1 class="text-5xl md:text-7xl font-black tracking-tighter mb-6">BERLIN</h1>
             <p class="text-2xl md:text-4xl font-light mb-10">Miasto, które zmieniło bieg historii Europy</p>
-            <a href="#ogolne" class="inline-block bg-yellow-400 hover:bg-yellow-300 text-black font-bold text-xl px-10 py-6 rounded-full transition">
+            <a href="#ogolne" class="inline-block bg-yellow-400 hover:bg-yellow-300 text-black font-bold text-xl px-10 py-6 rounded-full transition transform hover:scale-105">
                 Poznaj Berlin 
             </a>
         </div>
@@ -105,7 +108,7 @@
     <section id="dzisiaj" class="py-16 bg-white">
         <div class="max-w-4xl mx-auto px-6">
             <h2 class="text-4xl font-bold text-center mb-12 text-red-700">Berlin dzisiaj</h2>
-            <div class="prose prose-lg text-gray-700">
+            <div class="prose prose-lg text-gray-700 mx-auto">
                 <p>Berlin jest jednym z najszybciej rozwijających się miast Europy. Przyciąga młodych ludzi z całego świata dzięki dynamicznej scenie startupowej, niskim kosztom życia i otwartej, kreatywnej atmosferze.</p>
                 <p>Miasto jest prawdziwą stolicą kultury i sztuki – ma ponad 170 muzeów, setki galerii, 3 opery i słynny festiwal filmowy Berlinale. Jest też uznawane za światową stolicę klubów i życia nocnego.</p>
                 <p class="bg-amber-50 p-8 rounded-3xl my-8">
@@ -114,68 +117,79 @@
                 </p>
             </div>
         </div>
-    </section> <section id="atrakcje" class="py-16 bg-zinc-100">
+    </section>
+
+    <section id="atrakcje" class="py-16 bg-zinc-100">
         <div class="max-w-7xl mx-auto px-6">
             <h2 class="text-4xl font-bold text-center mb-12 text-red-700">Najważniejsze atrakcje</h2>
             <div class="space-y-10">
-                <div class="flex flex-col md:flex-row gap-6 bg-white rounded-3xl overflow-hidden shadow">
-                    <img src="image/brama.jpg" class="w-full md:w-1/2 aspect-video object-cover">
+                
+                <div class="flex flex-col md:flex-row gap-6 bg-white rounded-3xl overflow-hidden shadow hover:shadow-lg transition">
+                    <img src="image/brama.jpg" class="w-full md:w-1/2 aspect-video object-cover" alt="Brama Brandenburska">
                     <div class="p-8">
                         <h3 class="font-bold text-2xl mb-3">Brama Brandenburska</h3>
                         <p class="text-lg">Najbardziej znany symbol Berlina i zjednoczonych Niemiec. Miejsce wielkich historycznych wydarzeń.</p>
                     </div>
                 </div>
-                <div class="flex flex-col md:flex-row gap-6 bg-white rounded-3xl overflow-hidden shadow">
-                    <img src="image/gallery.jpeg" class="w-full md:w-1/2 aspect-video object-cover">
+
+                <div class="flex flex-col md:flex-row gap-6 bg-white rounded-3xl overflow-hidden shadow hover:shadow-lg transition">
+                    <img src="image/gallery.jpeg" class="w-full md:w-1/2 aspect-video object-cover" alt="East Side Gallery">
                     <div class="p-8">
                         <h3 class="font-bold text-2xl mb-3">East Side Gallery</h3>
                         <p class="text-lg">Najdłuższy zachowany fragment Muru Berlińskiego (1,3 km) pokryty wspaniałymi muralami.</p>
                     </div>
                 </div>
-                <div class="flex flex-col md:flex-row gap-6 bg-white rounded-3xl overflow-hidden shadow">
-                    <img src="image/tower.jpg" class="w-full md:w-1/2 aspect-video object-cover">
+
+                <div class="flex flex-col md:flex-row gap-6 bg-white rounded-3xl overflow-hidden shadow hover:shadow-lg transition">
+                    <img src="image/tower.jpg" class="w-full md:w-1/2 aspect-video object-cover" alt="Wieża Telewizyjna">
                     <div class="p-8">
                         <h3 class="font-bold text-2xl mb-3">Wieża Telewizyjna</h3>
                         <p class="text-lg">368 metrów wysokości. Z tarasu widokowego roztacza się niesamowita panorama całego Berlina.</p>
                     </div>
                 </div>
-                <div class="flex flex-col md:flex-row gap-6 bg-white rounded-3xl overflow-hidden shadow">
-                    <img src="image/tier.jpg" class="w-full md:w-1/2 aspect-video object-cover">
+
+                <div class="flex flex-col md:flex-row gap-6 bg-white rounded-3xl overflow-hidden shadow hover:shadow-lg transition">
+                    <img src="image/tier.jpg" class="w-full md:w-1/2 aspect-video object-cover" alt="Tiergarten">
                     <div class="p-8">
                         <h3 class="font-bold text-2xl mb-3">Tiergarten</h3>
-                        <p class="text-lg">Ogromny park o powierzchni 210 hektarów w centrum Berlina. Dawny teren łowiecki królów Prus, dziś popularne miejsce rekreacji z alejami, jeziorem i Kolumną Zwycięstwa.</p>
+                        <p class="text-lg">Ogromny park o powierzchni 210 hektarów w centrum Berlina. Dawny teren łowiecki królów Prus, dziś popularne miejsce rekreacji.</p>
                     </div>
                 </div>
-                <div class="flex flex-col md:flex-row gap-6 bg-white rounded-3xl overflow-hidden shadow">
-                    <img src="image/hum.jpg" class="w-full md:w-1/2 aspect-video object-cover">
+
+                <div class="flex flex-col md:flex-row gap-6 bg-white rounded-3xl overflow-hidden shadow hover:shadow-lg transition">
+                    <img src="image/hum.jpg" class="w-full md:w-1/2 aspect-video object-cover" alt="Uniwersytet">
                     <div class="p-8">
                         <h3 class="font-bold text-2xl mb-3">Uniwersytet Humboldt</h3>
-                        <p class="text-lg">Jedna z najstarszych i najbardziej prestiżowych uczelni Niemiec, założona w 1810 roku. Kształciła wielu noblistów i wybitnych naukowców.</p>
+                        <p class="text-lg">Jedna z najstarszych i najbardziej prestiżowych uczelni Niemiec, założona w 1810 roku.</p>
                     </div>
                 </div>
-                <div class="flex flex-col md:flex-row gap-6 bg-white rounded-3xl overflow-hidden shadow">
-                    <img src="image/km.jpg" class="w-full md:w-1/2 aspect-video object-cover">
+
+                <div class="flex flex-col md:flex-row gap-6 bg-white rounded-3xl overflow-hidden shadow hover:shadow-lg transition">
+                    <img src="image/km.jpg" class="w-full md:w-1/2 aspect-video object-cover" alt="Kościół Mariacki">
                     <div class="p-8">
                         <h3 class="font-bold text-2xl mb-3">Kościół Mariacki w Berlinie</h3>
-                        <p class="text-lg">Jedna z najstarszych świątyń stolicy, usytuowana przy Alexanderplatz, która w swoich gotyckich murach skrywa bezcenny, średniowieczny fresk „Taniec Śmierci”.</p>
+                        <p class="text-lg">Jedna z najstarszych świątyń stolicy, która w swoich gotyckich murach skrywa fresk „Taniec Śmierci”.</p>
                     </div>
                 </div>
-                <div class="flex flex-col md:flex-row gap-6 bg-white rounded-3xl overflow-hidden shadow">
-                    <img src="image/kebs.jpg" class="w-full md:w-1/2 aspect-video object-cover">
+
+                <div class="flex flex-col md:flex-row gap-6 bg-white rounded-3xl overflow-hidden shadow hover:shadow-lg transition">
+                    <img src="image/kebs.jpg" class="w-full md:w-1/2 aspect-video object-cover" alt="Kebab">
                     <div class="p-8">
                         <h3 class="font-bold text-2xl mb-3">Gemüse Kebab Berlin</h3>
-                        <p class="text-lg">Kultowy symbol berlińskiego street foodu, który zachwyca połączeniem pieczonych warzyw, świeżych ziół i sera feta, przyciągając codziennie tłumy turystów pod najsłynniejsze budki w mieście.</p>
+                        <p class="text-lg">Kultowy symbol berlińskiego street foodu, który zachwyca połączeniem pieczonych warzyw i świeżych ziół.</p>
                     </div>
                 </div>
-            </div> </div> </section>
+            </div> 
+        </div> 
+    </section>
 
-<footer class="bg-zinc-900 text-white py-16 text-center px-6 mt-auto">
-    <p class="text-3xl font-bold mb-4">Berlin <span id="current-year"></span></p>
-    <p class="text-zinc-400">Strona edukacyjna przygotowana do gazetki szkolnej</p>
-</footer>
-<script>
+    <footer class="bg-zinc-900 text-white py-16 text-center px-6 mt-auto">
+        <p class="text-3xl font-bold mb-4">Berlin <span id="current-year"></span></p>
+        <p class="text-zinc-400">Strona edukacyjna przygotowana do gazetki szkolnej</p>
+    </footer>
+
+    <script>
         document.getElementById('current-year').textContent = new Date().getFullYear();
     </script>
-</body>
 </body>
 </html>
